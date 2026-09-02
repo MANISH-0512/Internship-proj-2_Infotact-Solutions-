@@ -1,0 +1,25 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["iot_sensor_data","container_details","commodity_prices","market_details"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.126.1261.0 (24.02)
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table iot_sensor_data
+ref table DateTableTemplate_2bdd2a4c-ecea-4f83-a68e-0ba3cb18c9c2
+ref table LocalDateTable_0d5a070e-5839-4bf6-8b41-c198a89679bc
+ref table container_details
+ref table LocalDateTable_7d132e29-dcc4-4a1d-9dc9-26408af02860
+ref table commodity_prices
+ref table LocalDateTable_6cebed93-860b-4d35-a953-6163271d440b
+ref table market_details
+

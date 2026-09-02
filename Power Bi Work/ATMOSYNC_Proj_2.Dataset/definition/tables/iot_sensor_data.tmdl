@@ -1,0 +1,111 @@
+table iot_sensor_data
+	lineageTag: fb2aafa2-2304-4b84-a35c-9a432395790e
+
+	column event_id
+		dataType: string
+		lineageTag: 9e9f0fd0-7a99-48bf-89c3-18e72dd0c432
+		summarizeBy: none
+		sourceColumn: event_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column container_id
+		dataType: string
+		lineageTag: 1bdaddd3-4e0a-4643-8977-606a053bee6d
+		summarizeBy: none
+		sourceColumn: container_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: string
+		lineageTag: 7949d250-f0a1-4769-b07f-dd276abb8067
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column timestamp
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a724e64c-f161-4d18-a7c7-27d6dd4b5d9d
+		summarizeBy: none
+		sourceColumn: timestamp
+
+		variation Variation
+			isDefault
+			relationship: 3d37572f-dd54-4b95-b669-9e7ff40475fc
+			defaultHierarchy: LocalDateTable_0d5a070e-5839-4bf6-8b41-c198a89679bc.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column temperature
+		dataType: double
+		lineageTag: 6b6666cb-e736-40ad-bcbd-d1593d94166b
+		summarizeBy: sum
+		sourceColumn: temperature
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column humidity
+		dataType: double
+		lineageTag: 011ec2b1-6e0a-45d9-bbdb-435aee01033d
+		summarizeBy: sum
+		sourceColumn: humidity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vibration
+		dataType: double
+		lineageTag: 554a8b3f-beac-4d43-b2e2-32fd2d180422
+		summarizeBy: sum
+		sourceColumn: vibration
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column latitude
+		dataType: double
+		lineageTag: ce4b8c2c-6653-45de-89c9-b5539d822d7d
+		summarizeBy: sum
+		sourceColumn: latitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column longitude
+		dataType: double
+		lineageTag: 6b313484-b624-439c-96d6-39c613f2c32a
+		summarizeBy: sum
+		sourceColumn: longitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column location
+		dataType: string
+		lineageTag: 6132b6f2-e2cc-42dc-a2fc-947cffe5c914
+		summarizeBy: none
+		sourceColumn: location
+
+		annotation SummarizationSetBy = Automatic
+
+	partition iot_sensor_data = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\Dell\Desktop\Project 2 (Infotact Solutions)\Datasets\iot_sensor_data.csv"),[Delimiter=",", Columns=10, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"event_id", type text}, {"container_id", type text}, {"product_id", type text}, {"timestamp", type datetime}, {"temperature", type number}, {"humidity", type number}, {"vibration", type number}, {"latitude", type number}, {"longitude", type number}, {"location", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

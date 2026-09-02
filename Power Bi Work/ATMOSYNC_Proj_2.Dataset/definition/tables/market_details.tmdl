@@ -1,0 +1,54 @@
+table market_details
+	lineageTag: 8068800d-1721-4a6f-b601-b2cdd986a9a1
+
+	column Column1
+		dataType: string
+		lineageTag: 536cc9b6-92f0-4910-a5a4-eb12c3b9450a
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column2
+		dataType: string
+		lineageTag: 4a8954cb-e432-4379-ab9d-3fa7b6d20b1e
+		summarizeBy: none
+		sourceColumn: Column2
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column3
+		dataType: string
+		lineageTag: 05fbdedc-abc2-483f-ac90-a42312e46460
+		summarizeBy: none
+		sourceColumn: Column3
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column4
+		dataType: string
+		lineageTag: e3d30fa9-2386-430e-8114-0243efb3e6bb
+		summarizeBy: none
+		sourceColumn: Column4
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column5
+		dataType: string
+		lineageTag: b2899d03-bf17-46d1-8785-98f1db4a4203
+		summarizeBy: none
+		sourceColumn: Column5
+
+		annotation SummarizationSetBy = Automatic
+
+	partition market_details = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\Dell\Desktop\Project 2 (Infotact Solutions)\Datasets\market_details.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

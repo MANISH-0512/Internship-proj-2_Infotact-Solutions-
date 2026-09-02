@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "datasetReference": {
+    "byPath": {
+      "path": "../ATMOSYNC_Proj_2.Dataset"
+    },
+    "byConnection": null
+  }
+}

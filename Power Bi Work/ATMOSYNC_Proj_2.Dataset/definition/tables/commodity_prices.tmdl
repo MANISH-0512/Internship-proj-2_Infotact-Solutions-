@@ -1,0 +1,73 @@
+table commodity_prices
+	lineageTag: 3a3a1043-5e7a-487e-8431-d4b8623d2f11
+
+	column container_id
+		dataType: string
+		lineageTag: bc23eb75-adfa-41e4-80d7-ca9591bee036
+		summarizeBy: none
+		sourceColumn: container_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: string
+		lineageTag: 0e82c286-23fb-4afe-b4b5-02c0519dae92
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column commodity
+		dataType: string
+		lineageTag: 387f3890-5acb-4665-8396-f8287b377f1a
+		summarizeBy: none
+		sourceColumn: commodity
+
+		annotation SummarizationSetBy = Automatic
+
+	column market
+		dataType: string
+		lineageTag: be8533a2-0a0a-408e-8e3a-bc55df1af2e3
+		summarizeBy: none
+		sourceColumn: market
+
+		annotation SummarizationSetBy = Automatic
+
+	column price
+		dataType: double
+		lineageTag: 6dbfe957-30e4-462d-8024-96ede793be4c
+		summarizeBy: sum
+		sourceColumn: price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 977be5ab-b852-4f51-82f0-aff046c2cc09
+		summarizeBy: none
+		sourceColumn: date
+
+		variation Variation
+			isDefault
+			relationship: ebc34200-c0dc-443a-9253-0bfa18c893d6
+			defaultHierarchy: LocalDateTable_6cebed93-860b-4d35-a953-6163271d440b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition commodity_prices = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\Dell\Desktop\Project 2 (Infotact Solutions)\Datasets\commodity_prices.csv"),[Delimiter=",", Columns=6, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"container_id", type text}, {"product_id", type text}, {"commodity", type text}, {"market", type text}, {"price", type number}, {"date", type date}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

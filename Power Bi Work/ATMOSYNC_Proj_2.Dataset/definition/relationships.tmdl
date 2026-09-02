@@ -1,0 +1,15 @@
+relationship 3d37572f-dd54-4b95-b669-9e7ff40475fc
+	joinOnDateBehavior: datePartOnly
+	fromColumn: iot_sensor_data.timestamp
+	toColumn: LocalDateTable_0d5a070e-5839-4bf6-8b41-c198a89679bc.Date
+
+relationship 9d3537c7-e1ae-4c39-9d85-8c8ff8182db5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: container_details.dispatch_date
+	toColumn: LocalDateTable_7d132e29-dcc4-4a1d-9dc9-26408af02860.Date
+
+relationship ebc34200-c0dc-443a-9253-0bfa18c893d6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: commodity_prices.date
+	toColumn: LocalDateTable_6cebed93-860b-4d35-a953-6163271d440b.Date
+
