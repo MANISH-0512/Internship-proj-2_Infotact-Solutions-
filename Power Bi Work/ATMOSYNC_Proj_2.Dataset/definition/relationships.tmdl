@@ -13,3 +13,22 @@ relationship ebc34200-c0dc-443a-9253-0bfa18c893d6
 	fromColumn: commodity_prices.date
 	toColumn: LocalDateTable_6cebed93-860b-4d35-a953-6163271d440b.Date
 
+relationship bdc488ae-306c-47dd-8750-2f3c509c8611
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: container_details.container_id
+	toColumn: iot_sensor_data.container_id
+
+relationship afa5a2d5-e90f-408c-afef-55293c7be895
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: iot_sensor_data.container_id
+	toColumn: commodity_prices.container_id
+
+relationship 38a06e6f-36ad-422b-800e-ed7f3e4dd92f
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: container_details.container_id
+	toColumn: commodity_prices.container_id
+

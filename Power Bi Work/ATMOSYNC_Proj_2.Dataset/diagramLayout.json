@@ -10,55 +10,55 @@
       "nodes": [
         {
           "location": {
-            "x": 0,
-            "y": 0
+            "x": 287,
+            "y": 95
           },
           "nodeIndex": "iot_sensor_data",
           "nodeLineageTag": "fb2aafa2-2304-4b84-a35c-9a432395790e",
           "size": {
-            "height": 300,
+            "height": 317,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 1
         },
         {
           "location": {
-            "x": 284,
-            "y": 38
+            "x": 0,
+            "y": 17
           },
           "nodeIndex": "container_details",
           "nodeLineageTag": "7714ebbf-90c2-423a-836f-1d77e7dd9662",
           "size": {
-            "height": 224,
+            "height": 320,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 2
         },
         {
           "location": {
-            "x": 568,
-            "y": 38
+            "x": 599,
+            "y": 21
           },
           "nodeIndex": "commodity_prices",
           "nodeLineageTag": "3a3a1043-5e7a-487e-8431-d4b8623d2f11",
           "size": {
-            "height": 224,
+            "height": 313,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 3
         },
         {
           "location": {
-            "x": 852,
-            "y": 50
+            "x": 880,
+            "y": 91
           },
           "nodeIndex": "market_details",
           "nodeLineageTag": "8068800d-1721-4a6f-b601-b2cdd986a9a1",
           "size": {
-            "height": 200,
+            "height": 310,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 4
         }
       ],
       "name": "All tables",
