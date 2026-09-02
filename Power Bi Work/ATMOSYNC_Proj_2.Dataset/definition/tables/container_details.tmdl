@@ -1,6 +1,17 @@
 table container_details
 	lineageTag: 7714ebbf-90c2-423a-836f-1d77e7dd9662
 
+	measure 'Total Containers' = DISTINCT(container_details[container_id])
+		lineageTag: 537f9573-5b90-4d06-8c58-a9c1841a4c46
+
+	measure 'Total shipments' = COUNTROWS(container_details)
+		formatString: 0
+		lineageTag: 29dc71f3-1c5c-4a75-89d4-c037deb2007e
+
+	measure 'Total Quantity' = SUM(container_details[quantity])
+		formatString: 0
+		lineageTag: 85e519c6-fb45-45a1-960e-2617084c217b
+
 	column container_id
 		dataType: string
 		lineageTag: 1eae6a2c-897d-44c7-88a4-2c7217ffb638

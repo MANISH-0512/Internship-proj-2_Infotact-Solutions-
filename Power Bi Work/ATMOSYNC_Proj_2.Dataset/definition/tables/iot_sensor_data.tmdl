@@ -1,6 +1,20 @@
 table iot_sensor_data
 	lineageTag: fb2aafa2-2304-4b84-a35c-9a432395790e
 
+	measure 'Average Temp' = AVERAGE(iot_sensor_data[temperature])
+		lineageTag: dcff89ca-5d8c-40c0-b6c6-9f17fc1a2c0c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Humidity' = AVERAGE(iot_sensor_data[humidity])
+		lineageTag: 724095dd-130f-443b-9a79-86e6389bdc3f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Alert Readings' = CALCULATE(COUNTROWS(iot_sensor_data),FILTER(iot_sensor_data,iot_sensor_data[temperature] > 30 || iot_sensor_data[temperature] > 80 || iot_sensor_data[temperature] > 0.5 ) )
+		formatString: 0
+		lineageTag: 028e5771-1393-4e58-ac5c-690606f4256a
+
 	column event_id
 		dataType: string
 		lineageTag: 9e9f0fd0-7a99-48bf-89c3-18e72dd0c432
