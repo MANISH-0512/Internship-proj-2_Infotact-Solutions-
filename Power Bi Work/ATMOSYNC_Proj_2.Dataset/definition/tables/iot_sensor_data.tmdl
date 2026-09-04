@@ -15,6 +15,9 @@ table iot_sensor_data
 		formatString: 0
 		lineageTag: 028e5771-1393-4e58-ac5c-690606f4256a
 
+	measure 'Sensor Status' = IF(iot_sensor_data[temperature] > 30 || iot_sensor_data[Humidity] > 80 || iot_sensor_data[Vibration] > 0.5, "ALERT" , "NORMAL" )
+		lineageTag: 69cf023d-25d5-4185-8113-620285a9b3d6
+
 	column event_id
 		dataType: string
 		lineageTag: 9e9f0fd0-7a99-48bf-89c3-18e72dd0c432
